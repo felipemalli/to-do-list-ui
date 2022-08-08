@@ -7,9 +7,9 @@ export function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/inicialPage" element={<Button variant="contained" onClick={toggleTheme}>Teste</Button>} />
+      <Route path="/initialPage" element={<Button variant="contained" onClick={toggleTheme}>Teste</Button>} />
 
-      <Route path="*" element={<Navigate to="/inicialPage" />} />
+      <Route path="*" element={<Navigate to="/initialPage" />} />
     </Routes>
   );
 }
