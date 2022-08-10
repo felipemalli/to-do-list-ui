@@ -1,18 +1,20 @@
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routes';
 import { AsideDrawer } from './shared/components';
-import { AppThemeProvider } from './shared/contexts/ThemeContext';
+import { AppThemeProvider, DrawerProvider } from './shared/contexts';
 
 export const App = () => {
   return (
     <AppThemeProvider>
-      <BrowserRouter>
+      <DrawerProvider>
+        <BrowserRouter>
 
-        <AsideDrawer>
-          <AppRoutes />
-        </AsideDrawer>
+          <AsideDrawer>
+            <AppRoutes />
+          </AsideDrawer>
         
-      </BrowserRouter>
+        </BrowserRouter>
+      </DrawerProvider>
     </AppThemeProvider>
   );
 };
