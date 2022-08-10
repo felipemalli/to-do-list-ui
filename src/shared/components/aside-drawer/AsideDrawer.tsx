@@ -67,7 +67,7 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginLeft={smDown ? 0 : ( isDrawerOpen ? theme.spacing(28) : 0)}>
+      <Box height="100vh" marginLeft={smDown ? 0 : (isDrawerOpen ? theme.spacing(28) : 0)}>
         {children}
       </Box>
     </>
