@@ -40,7 +40,7 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
 
   return (
     <>
-      <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'persistent'} onClose={toggleDrawerOpen}>
+      <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'persistent'} onClose={toggleDrawerOpen} sx={{'& .MuiDrawer-paper': { borderWidth: 0 }}}>
         <Box width={theme.spacing(28)} height="100%" display="flex" flexDirection={'column'} bgcolor={theme.palette.secondary.light}>
 
           <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">

@@ -11,7 +11,7 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
   const { toggleTheme, themeName } = useAppThemeContext();
 
   return (
-    <Box padding={1} display="flex" justifyContent={'space-between'} alignItems="center" bgcolor={theme.palette.secondary.light} height={theme.spacing(smDown ? 6 : mdDown ? 8 : 10)}>
+    <Box borderLeft={1} borderColor={theme.palette.secondary.main} padding={1} display="flex" justifyContent={'space-between'} alignItems="center" bgcolor={theme.palette.secondary.light} height={theme.spacing(smDown ? 6 : mdDown ? 8 : 10)}>
       <Box display="flex" gap={2}>
         <IconButton onClick={toggleDrawerOpen}>
           <Icon>menu</Icon>

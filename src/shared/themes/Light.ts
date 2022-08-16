@@ -3,6 +3,7 @@ import { grey, orange } from '@mui/material/colors';
 
 export const LightTheme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
       main: orange[700],
       dark: orange[800],
@@ -10,8 +11,8 @@ export const LightTheme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: grey[400],
-      dark: grey[600],
+      main: grey[300],
+      dark: grey[500],
       light: grey[200],
       contrastText: '#ffffff',
     },
