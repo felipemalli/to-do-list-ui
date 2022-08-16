@@ -1,5 +1,4 @@
-import { Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) => {
