@@ -35,12 +35,13 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }
 export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenProps ) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
 
   return (
     <>
       <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'persistent'} onClose={toggleDrawerOpen}>
-        <Box width={theme.spacing(28)} height="100%" display="flex" flexDirection={'column'}>
+        <Box width={theme.spacing(28)} height="100%" display="flex" flexDirection={'column'} bgcolor={theme.palette.secondary.light}>
 
           <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">
             <Avatar 
@@ -66,7 +67,7 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
 
         </Box>
       </Drawer>
-
+              
       <Box height="100vh" marginLeft={smDown ? 0 : (isDrawerOpen ? theme.spacing(28) : 0)}>
         {children}
       </Box>
