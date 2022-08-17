@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { Toolbar } from '../../shared/components';
+import { ListToolbar } from '../../shared/components';
 import { BaseLayoutPage } from '../../shared/layouts';
 
 export const Dashboard = () => {
@@ -7,7 +7,11 @@ export const Dashboard = () => {
   return (
     <BaseLayoutPage
       title='Tasks' 
-      toolbar={(<Toolbar />)}
+      toolbar={(
+        <ListToolbar 
+          showSearchInput
+          showNewButton
+        />)}
     >
       <Button variant="contained">Test</Button>
     </BaseLayoutPage>
