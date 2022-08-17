@@ -2,20 +2,22 @@ import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
 
 interface IListToolbar {
   searchText?: string;
-  showSearchInput?: boolean;
-  whenChangeSearchInput?: (newText: string) => void;
   newButtonText?: string;
-  showNewButton?: boolean;
+  whenChangeSearchInput?: (newText: string) => void;
   whenClickNewButton?: () => void;
+  showSearchInput?: boolean;
+  showNewButton?: boolean;
 }
 
 export const ListToolbar: React.FC<IListToolbar> = (
   { 
     searchText = '',
-    whenChangeSearchInput,
-    showSearchInput = false, 
-    whenClickNewButton,
     newButtonText = 'New',
+
+    whenChangeSearchInput,
+    whenClickNewButton,
+    
+    showSearchInput = false, 
     showNewButton = true,
   }: IListToolbar
 ) => {
