@@ -1,6 +1,6 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { useDrawerContext } from '../../contexts';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 import { IChildrenProps } from '../../interfaces';
 
 interface IListItemLinkProps {
@@ -34,8 +34,10 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }
 export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenProps ) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
+  const { toggleTheme, themeName } = useAppThemeContext();
 
   return (
     <>
@@ -63,8 +65,21 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
               ))}
             </List>
           </Box>
-
+          {
+            mdDown && 
+            <Box>
+              <List component="nav">
+                <ListItemButton onClick={toggleTheme}>
+                  <ListItemIcon>
+                    <Icon >{themeName === 'light' ? 'light_mode' : 'dark_mode'}</Icon>
+                  </ListItemIcon>
+                  <ListItemText>Change Theme</ListItemText>
+                </ListItemButton>
+              </List>
+            </Box>
+          }
         </Box>
+        
       </Drawer>
               
       <Box height="100vh" marginLeft={smDown ? 0 : (isDrawerOpen ? theme.spacing(28) : 0)}>
