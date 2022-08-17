@@ -26,12 +26,14 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
         </Typography>
 
         {!mdDown && 
-           <Box display="flex" gap={1}>
-             <TextField size="small" placeholder='Searching...'/>
-             <Box flex={1} display="flex" justifyContent={'end'}>
-               <Button>Search</Button>
-             </Box>
-           </Box>
+            <Box display="flex" gap={1}>
+              <TextField size="small" placeholder='Searching...'/>
+              <Box flex={1} display="flex" justifyContent={'end'}>
+                <Button color='primary' disableElevation variant='contained'>
+                  Search
+                </Button>
+              </Box>
+            </Box>
         }
      
 
