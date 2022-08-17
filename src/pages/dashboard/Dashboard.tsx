@@ -1,19 +1,22 @@
 import { Button } from '@mui/material';
-import { ListToolbar } from '../../shared/components';
+import { DetailToolbar } from '../../shared/components';
 import { BaseLayoutPage } from '../../shared/layouts';
 
-export const Dashboard = () => {
+export const Dashboard: React.FC = () => {
   
   return (
     <BaseLayoutPage
-      title='Tasks' 
+      title='Products' 
       toolbar={(
-        <ListToolbar 
-          showSearchInput
-          showNewButton
-        />)}
+        <DetailToolbar />)}
     >
       <Button variant="contained">Test</Button>
     </BaseLayoutPage>
   );
 };
+
+
+// <ListToolbar 
+//           showSearchInput
+//           showNewButton
+//         />
