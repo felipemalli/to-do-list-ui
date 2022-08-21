@@ -44,7 +44,7 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
         !(mdDown || (lgDown && isDrawerOpen)) && 
             <Box padding={2}>
               <IconButton onClick={toggleTheme} >
-                <Icon>{themeName === 'light' ? 'light_mode' : 'dark_mode'}</Icon>
+                <Icon>{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
               </IconButton>
             </Box>
       }    

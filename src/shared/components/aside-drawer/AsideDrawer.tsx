@@ -35,6 +35,7 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
   const { toggleTheme, themeName } = useAppThemeContext();
@@ -66,14 +67,14 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
             </List>
           </Box>
           {
-            mdDown && 
+            (mdDown || (lgDown && isDrawerOpen)) && 
             <Box>
               <List component="nav">
                 <ListItemButton onClick={toggleTheme}>
                   <ListItemIcon>
-                    <Icon >{themeName === 'light' ? 'light_mode' : 'dark_mode'}</Icon>
+                    <Icon >{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
                   </ListItemIcon>
-                  <ListItemText>Change Theme</ListItemText>
+                  <ListItemText>{themeName === 'light' ? 'Dark Mode' : 'Light Mode'}</ListItemText>
                 </ListItemButton>
               </List>
             </Box>
