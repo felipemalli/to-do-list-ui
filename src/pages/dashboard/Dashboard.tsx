@@ -6,7 +6,7 @@ export const Dashboard: React.FC = () => {
   
   return (
     <BaseLayoutPage
-      title='Products' 
+      title='Tasks' 
       toolbar={(
         <DetailToolbar />)}
     >
@@ -14,9 +14,3 @@ export const Dashboard: React.FC = () => {
     </BaseLayoutPage>
   );
 };
-
-
-// <ListToolbar 
-//           showSearchInput
-//           showNewButton
-//         />
