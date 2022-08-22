@@ -1,4 +1,5 @@
-import { Box, Button, Icon, IconButton, TextField, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { SearchLayer } from '../';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) => {
@@ -18,7 +19,7 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
         </IconButton>
         
         <Typography 
-          overflow="hidden"
+          overflow="visible"
           whiteSpace="nowrap"
           textOverflow="ellipsis"
           variant={mdDown ? 'h5' : 'h4'}
@@ -26,20 +27,8 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
           {title}
         </Typography>
 
-        {!((smDown) || (mdDown && isDrawerOpen)) && 
-            <Box display="flex" gap={1}>
-              <TextField size="small" placeholder='Searching...'/>
-              <Box flex={1} display="flex" justifyContent={'end'}>
-                <Button color='primary' disableElevation variant='contained'>
-                  Search
-                </Button>
-              </Box>
-            </Box>
-        }
-     
-
+        <SearchLayer onClick={ () => null }/>
       </Box>
-      
       {
         !(mdDown || (lgDown && isDrawerOpen)) && 
             <Box padding={2}>
@@ -48,7 +37,6 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
               </IconButton>
             </Box>
       }    
-
     </Box>
   );
 };
