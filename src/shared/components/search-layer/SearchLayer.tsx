@@ -11,10 +11,12 @@ export const SearchLayer: React.FC<ISearchLayer> = ({ onClick }: ISearchLayer) =
   
   const { isDrawerOpen } = useDrawerContext();
 
+  const smDownIndependentOfDrawer = smDown || (mdDown && isDrawerOpen);
+
   return (
     <>
       {
-        !((smDown) || (mdDown && isDrawerOpen)) ? (
+        !smDownIndependentOfDrawer ? (
           <Box display="flex" gap={1}>
             <TextField size="small" placeholder='Searching...'/>
             <Box flex={1} display="flex" justifyContent={'end'}>

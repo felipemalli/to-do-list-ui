@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, TextField, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Icon, Paper, Skeleton, TextField, Typography, useTheme } from '@mui/material';
 
 interface IDetailToolbarProps {
   newButtonText?: string;
@@ -39,8 +39,8 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
     whenClickBackButton,
   }: IDetailToolbarProps
 ) => {
-  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+  // const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  // const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const theme = useTheme();
 
 
@@ -109,9 +109,9 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
         <Skeleton width={100} height={60}/>
       )}
  
-      {(
+      {/* {(
         <Divider variant='middle' orientation='vertical'/>
-      )}
+      )} */}
 
       {(showBackButton && !showLoadingBackButton) && (
         <Button
