@@ -1,5 +1,5 @@
 import { Box, Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { SearchLayer } from '../';
+import { MenuProfile, SearchLayer } from '../';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) => {
@@ -10,33 +10,42 @@ export const Header: React.FC<{title: string}> = ({ title }: {title: string} ) =
   
   const { toggleDrawerOpen, isDrawerOpen } = useDrawerContext();
   const { toggleTheme, themeName } = useAppThemeContext();
-
+  
+  const mdDownIndependentOfDrawer = mdDown || (lgDown && isDrawerOpen);
+  const smDownIndependentOfDrawer = smDown || (mdDown && isDrawerOpen);
+  
   return (
-    <Box borderLeft={1} borderColor={theme.palette.secondary.main} padding={1} display="flex" justifyContent={'space-between'} alignItems="center" bgcolor={theme.palette.secondary.light} height={theme.spacing(smDown ? 6 : mdDown ? 8 : 10)}>
-      <Box display="flex" gap={mdDown ? 2 : 5} alignItems="center">
-        <IconButton onClick={toggleDrawerOpen}>
-          <Icon>{isDrawerOpen ? 'menu_open' : 'menu'}</Icon>
-        </IconButton>
+    <Box paddingY={1} paddingX={smDownIndependentOfDrawer ? 1 : 2} display="flex" justifyContent={'space-between'} alignItems="center" bgcolor={theme.palette.secondary.light} height={theme.spacing(smDownIndependentOfDrawer ? 6 : mdDownIndependentOfDrawer ? 8 : 10)} borderLeft={1} borderColor={theme.palette.secondary.main} >
+      <Box display="flex" gap={mdDownIndependentOfDrawer ? 0 : 1} alignItems="center">
+        <Box padding={mdDownIndependentOfDrawer ? 0 : 2}>
+          <IconButton onClick={toggleDrawerOpen}>
+            <Icon>{isDrawerOpen ? 'menu_open' : 'menu'}</Icon>
+          </IconButton>
+        </Box>
         
-        <Typography 
-          overflow="visible"
-          whiteSpace="nowrap"
-          textOverflow="ellipsis"
-          variant={mdDown ? 'h5' : 'h4'}
-        >
+        <Typography overflow="visible" whiteSpace="nowrap" textOverflow="ellipsis" variant={mdDownIndependentOfDrawer ? 'h5' : 'h4'} padding={2}>
           {title}
         </Typography>
-
-        <SearchLayer onClick={ () => null }/>
+        
+        <Box paddingX={smDownIndependentOfDrawer ? 0 : mdDownIndependentOfDrawer ? 2 : 4}>
+          <SearchLayer onClick={ () => null }/>
+        </Box>
       </Box>
+
       {
-        !(mdDown || (lgDown && isDrawerOpen)) && 
-            <Box padding={2}>
-              <IconButton onClick={toggleTheme} >
-                <Icon>{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
-              </IconButton>
-            </Box>
-      }    
+        !smDownIndependentOfDrawer && (
+          <Box display="flex" alignItems={'center'} gap={2} padding={2}>
+            {!mdDownIndependentOfDrawer && (
+              <Box padding={2}>
+                <IconButton onClick={toggleTheme} >
+                  <Icon>{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
+                </IconButton>
+              </Box>
+            )}
+            <MenuProfile />
+          </Box>
+        )
+      }
     </Box>
   );
 };
