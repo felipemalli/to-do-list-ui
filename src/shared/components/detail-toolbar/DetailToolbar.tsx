@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from '@mui/material';
+import { Box, Button, Divider, Icon, Paper, Skeleton, TextField, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 interface IDetailToolbarProps {
   newButtonText?: string;
@@ -25,8 +25,8 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
 
     showNewButton = true,
     showSaveButton = true,
-    showDeleteButton = true,
-    showBackButton = true,
+    showDeleteButton = false,
+    showBackButton = false,
 
     showLoadingNewButton = false,
     showLoadingSaveButton = false,
@@ -39,23 +39,39 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
     whenClickBackButton,
   }: IDetailToolbarProps
 ) => {
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const theme = useTheme();
 
+
+  
   return (
     <Box height={theme.spacing(5)} marginX={1} padding={1} paddingX={2} display="flex" gap={1} alignItems="center" component={Paper}>
-      {(showNewButton && !showLoadingNewButton) && (
-        <Button
-          color='primary'
-          disableElevation
-          variant='outlined'
-          onClick={whenClickNewButton}
-          startIcon={<Icon>add</Icon>}
-        >{newButtonText}</Button>
-      )}
+      
+      <Box display="flex" gap={1} alignItems={'center'}>
+        <TextField size="small" placeholder='New task here...'/>
+        <Box flex={1} display="flex" justifyContent={'end'} >
+          {(showNewButton && !showLoadingNewButton) && (
+            <Button
+              color='primary'
+              disableElevation
+              variant='outlined'
+              onClick={whenClickNewButton}
+              startIcon={<Icon>add</Icon>}
+            >
+              <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+                {newButtonText}
+              </Typography>
+            </Button>
+          )}
 
-      {showLoadingNewButton && (
-        <Skeleton width={80} height={60}/>
-      )}
+          {showLoadingNewButton && (
+            <Skeleton width={80} height={60}/>
+          )}
+        </Box>
+      </Box>
+
+
 
       {(showSaveButton && !showLoadingSaveButton) && (
         <Button
@@ -64,7 +80,11 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
           variant='contained'
           onClick={whenClickSaveButton}
           startIcon={<Icon>save</Icon>}
-        >Save</Button>
+        >
+          <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+            Save
+          </Typography>
+        </Button>
       )}
 
       {showLoadingSaveButton && (
@@ -78,14 +98,20 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
           variant='outlined'
           onClick={whenClickDeleteButton}
           startIcon={<Icon>delete</Icon>}
-        >Delete</Button>
+        >
+          <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+            Delete
+          </Typography>
+        </Button>
       )}
 
       {showLoadingDeleteButton && (
         <Skeleton width={100} height={60}/>
       )}
-
-      <Divider variant='middle' orientation='vertical'/>
+ 
+      {(
+        <Divider variant='middle' orientation='vertical'/>
+      )}
 
       {(showBackButton && !showLoadingBackButton) && (
         <Button
@@ -94,7 +120,11 @@ export const DetailToolbar: React.FC<IDetailToolbarProps> = (
           variant='outlined'
           onClick={whenClickBackButton}
           startIcon={<Icon>arrow_back</Icon>}
-        >Back</Button>
+        >
+          <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+            Back
+          </Typography>
+        </Button>
       )}
 
       {showLoadingBackButton && (
