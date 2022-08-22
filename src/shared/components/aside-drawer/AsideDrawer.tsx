@@ -66,19 +66,34 @@ export const AsideDrawer: React.FC<IChildrenProps> = ({ children }: IChildrenPro
               ))}
             </List>
           </Box>
-          {
-            (mdDown || (lgDown && isDrawerOpen)) && 
-            <Box>
-              <List component="nav">
-                <ListItemButton onClick={toggleTheme}>
-                  <ListItemIcon>
-                    <Icon >{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
-                  </ListItemIcon>
-                  <ListItemText>{themeName === 'light' ? 'Dark Mode' : 'Light Mode'}</ListItemText>
-                </ListItemButton>
-              </List>
-            </Box>
-          }
+          
+            
+          <Box>
+            <List component="nav">
+
+              {(mdDown || (lgDown && isDrawerOpen)) && 
+                (
+                  <ListItemButton onClick={toggleTheme}>
+                    <ListItemIcon>
+                      <Icon >{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
+                    </ListItemIcon>
+                    <ListItemText>{themeName === 'light' ? 'Dark Mode' : 'Light Mode'}</ListItemText>
+                  </ListItemButton>
+                )
+              }
+              {((smDown) || (mdDown && isDrawerOpen)) && 
+                (
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Icon >logout</Icon>
+                    </ListItemIcon>
+                    <ListItemText>Logout</ListItemText>
+                  </ListItemButton>
+                )
+              }
+            </List>
+          </Box>
+        
         </Box>
         
       </Drawer>
