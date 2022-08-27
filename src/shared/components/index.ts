@@ -1,5 +1,5 @@
 export * from './aside-drawer/AsideDrawer';
-export * from './detail-toolbar/DetailToolbar';
+export * from './create-task-toolbar/CreateTaskToolbar';
 export * from './header/Header';
 export * from './list-toolbar/ListToolbar';
 export * from './menu-profile/MenuProfile';

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { DetailToolbar } from '../../shared/components';
+import { CreateTaskToolbar } from '../../shared/components';
 import { BaseLayoutPage } from '../../shared/layouts';
 
 export const Dashboard: React.FC = () => {
@@ -8,7 +8,7 @@ export const Dashboard: React.FC = () => {
     <BaseLayoutPage
       title='Tasks' 
       toolbar={(
-        <DetailToolbar />)}
+        <CreateTaskToolbar />)}
     >
       <Button variant="contained">Test</Button>
     </BaseLayoutPage>
